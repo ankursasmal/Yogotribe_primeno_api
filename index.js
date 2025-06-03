@@ -5,10 +5,13 @@ app.get('/',(req,res)=>{
     res.json({"mess":"data come","success":true})
 })
 app.get('/prime/:no',async(req,res)=>{
-     let {no}=req.params;
-    console.log("no",no)
+     let num=req.params.no;
+      
   try{
-        let ans=true;
+     if((num[0]>='a' && num[0]<='z') || (num[0]>='A' && num[0]<='Z') ){
+        throw new Error('enter no type');
+     } 
+    let ans=true;
 
     for(let i=2;i<=Math.floor(no/2);i++){
         if(no%i===0){
@@ -16,12 +19,12 @@ ans=false;
 break;
         }
     }
-    res.json({"mess":"data come","success":true,  "number": no,
+    res.json({"mess":"data come","success":true,  "number": num,
   "isPrime": ans
 });
 }
 catch(e){
-    res.json({"mess":"data not come","success":false,"error":true});
+    res.json({"mess":e.message,"success":false,"error":true});
 
 }
 })
