@@ -8,6 +8,7 @@ app.get('/prime/:no',async(req,res)=>{
      let num=req.params.no;
       
   try{
+    // if i use regex then handel all char except 0 to 9 numbers 
      if((num[0]>='a' && num[0]<='z') || (num[0]>='A' && num[0]<='Z') ){
         throw new Error('enter no type');
      } 
