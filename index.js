@@ -16,7 +16,9 @@ ans=false;
 break;
         }
     }
-    res.json({"mess":"data come","success":true,"ans":ans});
+    res.json({"mess":"data come","success":true,  "number": no,
+  "isPrime": ans
+});
 }
 catch(e){
     res.json({"mess":"data not come","success":false,"error":true});
